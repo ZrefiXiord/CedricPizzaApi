@@ -12,7 +12,6 @@ router.get('/:id', (req, res) => {
     pizas.getPizzas(id).then(pizzas => {
         res.send(pizas.parsePizzas(JSON.parse(pizzas)));
     }).catch(err =>{
-        console.log(err);
         res.send("unknown id");
     });
 });

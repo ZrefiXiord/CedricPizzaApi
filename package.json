@@ -2,7 +2,7 @@
   "name": "pizzascedricapi",
   "version": "1.0.0",
   "description": "An api to simplify exchange with Les pizzas de cédric",
-  "main": "app.js",
+  "main": "src/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

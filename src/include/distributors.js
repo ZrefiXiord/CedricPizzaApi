@@ -1,5 +1,5 @@
 const superagent = require("superagent");
-function getDistributeurs(){
+function getDistributors(){
     return superagent.get("https://appyness.mypizzadoor-pro.com/web/ols/apds")
     .set("Host","appyness.mypizzadoor-pro.com")
     .set("Connection","keep-alive")
@@ -26,17 +26,20 @@ function getDistributeurs(){
         return distribs;
     })
     .catch(err =>{
-        console.log(err.response);
+        
     });
 }
-function parseDistributeurs(request){
+function parseDistributors(request){
     result=[];
     request.apds.forEach(element => {
-        result.push([element.address, element.id]);
+        dis={};
+        dis.id=element.id;
+        dis.name=element.address;
+        result.push(dis);
     });
     return result;
 }
 
 
 
-module.exports = { getDistributeurs, parseDistributeurs}
+module.exports = { getDistributors, parseDistributors}

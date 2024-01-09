@@ -22,7 +22,7 @@ function getPizzas(id){
     .set("Accept-Encoding","gzip, deflate, br")
     .set("Accept-Language","fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7")
     .then(res =>{
-        if(res.ok){
+        if(res.statusCode=200){
             return JSON.stringify(res.body);
         }
 
@@ -30,18 +30,7 @@ function getPizzas(id){
         return pizzas;
     });
 }
-/*
-[
-    {
-        idPizza:id,
-        nomPizza:nom,
-        quantitePizza:quantite,
-        prixPizza:prix,
-        ingredientsPizza:[ingredient1, ing2,...]
-    }
 
-]
-*/
 function parsePizzas(request){
     let result=[];
     request.display.forEach(element => {
