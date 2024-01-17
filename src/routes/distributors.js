@@ -1,10 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const distribs = require("../include/distributors");
+const parsers = require("../utilities/parsers");
+const requests = require("../utilities/requests");
 
 router.get('/', (req, res) => {
-    distribs.getDistributors().then(distribsjson => {
-        res.send(distribs.parseDistributors(JSON.parse(distribsjson)));
+    requests.distributorsRequest().then(distribsjson => {
+        res.send(parsers.parseDistributors(JSON.parse(distribsjson)));
     });
 });
 

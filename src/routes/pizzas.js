@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const pizas = require("../include/pizzas");
+const parsers = require("../utilities/parsers");
+const requests = require("../utilities/requests");
 
 
 router.get('/', (req, res) => {
@@ -9,8 +10,8 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
     let id=req.params.id;
-    pizas.getPizzas(id).then(pizzas => {
-        res.send(pizas.parsePizzas(JSON.parse(pizzas)));
+    requests.pizzasRequest(id).then(pizzas => {
+        res.send(parsers.parsePizzas(JSON.parse(pizzas)));
     }).catch(err =>{
         res.send("unknown id");
     });
